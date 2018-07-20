@@ -2,6 +2,8 @@
 from copy import deepcopy
 from urllib import urlencode
 
+from __future__ import print_function
+
 from django.conf import settings
 from django.db.models import ForeignKey
 from django.template import Template, Context
@@ -167,7 +169,7 @@ class WhamManager(models.Manager):
             full_url = "%s?%s" % (url, urlencode(final_params))
         else:
             full_url = url
-        print full_url
+        print(full_url)
 
         if not fetch_live:
             if (full_url, depth) in settings._wham_http_cache:

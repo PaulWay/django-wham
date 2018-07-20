@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from functools import wraps
 import datetime
 from requests import cookies
@@ -86,7 +88,7 @@ def urlmatch(scheme=None, netloc=None, path=None, method=None, params=None):
             if params is not None:
                 if dict(urlparse.parse_qsl(url.query)) != params:
                     return
-            print 'using mock response for path %s' % url.path
+            print('using mock response for path %s' % url.path)
             return func(self_or_url, url_or_request, *args, **kwargs)
         return inner
     return decorator

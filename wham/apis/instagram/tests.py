@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from os.path import join
 import os
 from django.test import TestCase
@@ -8,6 +10,6 @@ class TestCase(TestCase):
     def test_instagram(self):
 
         for post in InstagramTag.objects.get(id='pyconau').posts.all():
-            print post
+            print(post)
             # display(Image(post.image_url))
 

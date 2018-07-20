@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 from urllib import urlencode
 import urllib2
 from wham.httmock import urlmatch
@@ -28,7 +30,7 @@ def build_httmock_function(scheme, netloc, url_path, response_content, method='G
 
 
 def build_httmock_functions(mock_response_dir):
-    print 'building mock functions'
+    print('building mock functions')
     functions = []
     for filename in listdir(mock_response_dir):
         filepath = join(mock_response_dir,filename)
@@ -44,9 +46,9 @@ def build_httmock_functions(mock_response_dir):
             parts = urlparse(url)
             params = {}
             if parts.query:
-                print parts.query
+                print(parts.query)
                 params = dict(parse_qsl(parts.query))
-                print params
+                print(params)
             with open(filepath) as f:
                 content = f.read()
                 functions.append(build_httmock_function(
@@ -58,6 +60,6 @@ def make_mock_response_file(url, content, output_dir, method='GET', extra_params
     if extra_params:
         url += '?' + urlencode(extra_params)
     path = output_dir + method + urllib2.quote(url, safe='')
-    print path
+    print(path)
     with open(path, 'w') as f:
         f.write(content)
